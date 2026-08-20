@@ -7,46 +7,59 @@ export const profile = {
   name: "Rahul Gharat",
   // Short handle / logo text shown in the navbar
   handle: "RG",
-  title: "Software Engineer",
+  title: "Senior Product Manager",
   // One punchy line under your name in the hero
-  tagline: "I build things for the web.",
+  tagline:
+    "I turn ideas into products — blending product strategy, rapid development, and hands-on engineering.",
   // 2-4 sentence bio for the About section
   about: [
-    "Hi, I'm Rahul — a software engineer who loves turning ideas into polished, production-ready products.",
-    "I enjoy working across the stack, from crafting delightful user interfaces to designing reliable backend systems.",
+    "Hi, I'm Rahul — a Senior Product Manager at DronaHQ (Deltecs Infotech), where I've spent the last 9+ years helping teams build and ship low-code products that thousands of businesses rely on.",
+    "I started out as an engineer, and that builder's mindset still drives how I work: I love going from a rough idea to a shipped product fast, whether that means writing product specs, architecting a solution, or jumping into the code myself.",
+    "When I'm not shipping, I'm usually exploring new dev tools, automating something, or writing about what I've learned.",
   ],
   location: "Mumbai, India",
-  email: "hello@rahulgharat.me",
+  email: "rahul@dronamobile.com",
   social: {
-    github: "https://github.com/rahulgharat",
-    linkedin: "https://www.linkedin.com/in/rahulgharat",
-    twitter: "",
+    github: "https://github.com/rahulgharat-me",
+    linkedin: "https://www.linkedin.com/in/rahulgharat-me",
+    twitter: "https://x.com/rahulgharat_me",
   },
   skills: [
-    { category: "Languages", items: ["JavaScript", "TypeScript", "Python"] },
-    { category: "Frontend", items: ["React", "Next.js", "Tailwind CSS"] },
-    { category: "Backend", items: ["Node.js", "Express", "PostgreSQL"] },
-    { category: "Tools", items: ["Git", "Docker", "AWS"] },
-  ],
-  experience: [
     {
-      role: "Senior Software Engineer",
-      company: "Company Name",
-      companyUrl: "",
-      period: "2023 — Present",
-      points: [
-        "Led development of a key product feature used by thousands of users.",
-        "Mentored junior engineers and improved team code-review practices.",
+      category: "Product",
+      items: [
+        "Product Management",
+        "Product Architecture",
+        "Project Management",
+        "Rapid Prototyping",
+        "Agile & Scrum",
+        "Roadmapping",
       ],
     },
     {
-      role: "Software Engineer",
-      company: "Previous Company",
-      companyUrl: "",
-      period: "2020 — 2023",
+      category: "Backend",
+      items: ["Node.js", "Python", "ASP.NET", "REST APIs", "SQL"],
+    },
+    {
+      category: "Frontend",
+      items: ["HTML", "CSS", "JavaScript", "React", "Responsive Design"],
+    },
+    {
+      category: "DevOps & Tools",
+      items: ["DevOps", "CI/CD", "Docker", "Git", "Linux", "Low-code Platforms"],
+    },
+  ],
+  experience: [
+    {
+      role: "Senior Product Manager",
+      company: "Deltecs Infotech Pvt Ltd (DronaHQ)",
+      companyUrl: "https://www.dronahq.com",
+      period: "Jun 2017 — Present",
       points: [
-        "Built and shipped full-stack features across web and mobile.",
-        "Improved application performance and reliability.",
+        "Drive product strategy and roadmap for DronaHQ, a low-code platform used by businesses to build internal tools and apps rapidly.",
+        "Work across the full product lifecycle — from discovery and specs to architecture decisions, release planning, and go-to-market.",
+        "Partner closely with engineering, design, and customers to ship features fast without compromising on quality.",
+        "Grew from a hands-on engineering background into product leadership, bridging the gap between technical and business teams.",
       ],
     },
   ],

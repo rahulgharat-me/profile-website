@@ -7,7 +7,7 @@ tags: ["meta", "personal"]
 
 Welcome to my brand-new site at **rahulgharat.me**! 🎉
 
-This is where I'll be writing about software engineering, things I'm building, and lessons I pick up along the way.
+I'm Rahul — Senior Product Manager at [DronaHQ](https://www.dronahq.com), engineer at heart. This is where I'll write about product management, low-code, rapid development, and lessons I pick up building software products.
 
 ## How this site is built
 
