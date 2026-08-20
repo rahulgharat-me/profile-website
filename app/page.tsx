@@ -151,24 +151,14 @@ function Skills() {
   );
 }
 
-function LatestPosts() {
-  const posts = getAllPosts().slice(0, 3);
+function Blog() {
+  const posts = getAllPosts();
   if (posts.length === 0) return null;
 
   return (
-    <section className="px-6 py-20">
+    <section id="blog" className="scroll-mt-24 px-6 py-20">
       <div className="mx-auto max-w-5xl">
-        <div className="flex items-baseline justify-between mb-10">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold">
-            <span className="text-gradient">Latest Posts</span>
-          </h2>
-          <Link
-            href="/blog/"
-            className="text-sm text-sky-300 hover:text-sky-200 transition-colors"
-          >
-            View all →
-          </Link>
-        </div>
+        <SectionHeading>Blog</SectionHeading>
         <div className="grid gap-6 md:grid-cols-3">
           {posts.map((post) => (
             <Link
@@ -201,7 +191,7 @@ export default function Home() {
         <About />
         <Experience />
         <Skills />
-        <LatestPosts />
+        <Blog />
       </main>
       <Footer />
     </>

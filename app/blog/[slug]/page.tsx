@@ -37,10 +37,10 @@ export default async function BlogPost({
       <main className="px-6 pt-32 pb-16 min-h-screen">
         <article className="mx-auto max-w-3xl">
           <Link
-            href="/blog/"
+            href="/#blog"
             className="text-sm text-sky-300 hover:text-sky-200 transition-colors"
           >
-            ← All posts
+            ← Back to home
           </Link>
           <h1 className="font-display text-3xl sm:text-5xl font-bold mt-6 mb-4">
             <span className="text-gradient">{post.title}</span>
