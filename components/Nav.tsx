@@ -4,7 +4,7 @@ const links = [
   { href: "/#about", label: "about" },
   { href: "/#experience", label: "experience" },
   { href: "/#skills", label: "skills" },
-  { href: "/#blog", label: "blog" },
+  { href: "/blog/", label: "blog" },
 ];
 
 export default function Nav() {

@@ -1,9 +1,7 @@
-import Link from "next/link";
 import Nav from "@/components/Nav";
 import ContactButton from "@/components/ContactButton";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
-import { getAllPosts } from "@/lib/posts";
 
 function Hero() {
   const socials = [
@@ -172,44 +170,6 @@ function Skills() {
   );
 }
 
-function Blog() {
-  const posts = getAllPosts();
-  if (posts.length === 0) return null;
-
-  return (
-    <section
-      id="blog"
-      className="scroll-mt-20 py-12 sm:py-16 border-t border-line flex flex-col gap-[22px]"
-    >
-      <div className="flex justify-between items-baseline gap-4">
-        <SectionHeading>blog</SectionHeading>
-        <Link href="/blog/" className="text-xs text-fg-dim hover:text-accent">
-          all posts →
-        </Link>
-      </div>
-      {posts.map((post) => (
-        <Link
-          key={post.slug}
-          href={`/blog/${post.slug}/`}
-          className="flex gap-4 sm:gap-6 items-baseline border border-line p-5 sm:px-[26px] sm:py-6 flex-wrap hover:border-accent hover:bg-card transition-colors"
-        >
-          <span className="text-xs text-fg-dim whitespace-nowrap">
-            {post.date}
-          </span>
-          <span className="flex flex-col gap-[7px] min-w-[220px] flex-1">
-            <span className="text-lg font-bold text-fg-bright">
-              {post.title}
-            </span>
-            <span className="text-sm leading-[1.65] text-fg-mid">
-              {post.excerpt}
-            </span>
-          </span>
-        </Link>
-      ))}
-    </section>
-  );
-}
-
 export default function Home() {
   return (
     <>
@@ -219,7 +179,6 @@ export default function Home() {
         <About />
         <Experience />
         <Skills />
-        <Blog />
       </main>
       <Footer />
     </>
