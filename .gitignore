@@ -5,13 +5,29 @@
 /.next/
 /out/
 
+# env files (may contain secrets)
+.env
+.env*.local
+
+# vercel
+.vercel
+
 # misc
 .DS_Store
 *.pem
 
 # debug
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local tooling
+.claude/settings.local.json
+
+# local design reference (remove this line if you want it versioned)
+design.html

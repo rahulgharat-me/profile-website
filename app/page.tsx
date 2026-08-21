@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import Blobs from "@/components/Blobs";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
 import { getAllPosts } from "@/lib/posts";
@@ -12,24 +11,30 @@ function Hero() {
     { label: "Twitter", href: profile.social.twitter },
   ].filter((s) => s.href);
 
+  const [firstName, ...restName] = profile.name.split(" ");
+
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 pt-16">
-      <div className="mx-auto max-w-5xl w-full animate-fade-up flex flex-col-reverse md:flex-row md:items-center gap-10">
-        <div className="flex-1">
-        <p className="font-display text-lg text-sky-300 mb-4">Hey there, I'm</p>
-        <h1 className="font-display text-5xl sm:text-7xl font-bold tracking-tight mb-4">
-          <span className="text-gradient">{profile.name}</span>
+    <section className="py-14 sm:py-24 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-14 items-start">
+      <div className="flex flex-col gap-[22px] min-w-0">
+        <p className="text-[13px] text-accent">
+          $ whoami<span className="text-fg-faint"> — Hey there, I&apos;m</span>
+        </p>
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl leading-none tracking-tighter font-bold text-fg-bright">
+          {firstName}
+          <br />
+          {restName.join(" ")}
+          <span className="text-accent animate-blink">_</span>
         </h1>
-        <h2 className="font-display text-2xl sm:text-4xl font-semibold text-white/80 mb-6">
-          {profile.title}
-        </h2>
-        <p className="max-w-xl text-lg text-white/60 mb-10">{profile.tagline}</p>
-        <div className="flex flex-wrap items-center gap-4">
+        <p className="text-[15px] text-fg-muted">{profile.title}</p>
+        <p className="text-[17px] leading-relaxed max-w-[34em] text-fg-soft">
+          {profile.tagline}
+        </p>
+        <div className="flex gap-2.5 flex-wrap pt-2 text-[13px]">
           <a
             href={`mailto:${profile.email}`}
-            className="rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-sky-500 px-7 py-3 font-semibold text-white shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-105 transition-all"
+            className="px-[18px] py-3 bg-accent text-accent-ink font-bold hover:bg-accent-bright hover:-translate-y-0.5 transition-all"
           >
-            Get in touch
+            get in touch →
           </a>
           {socials.map((s) => (
             <a
@@ -37,50 +42,49 @@ function Hero() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/15 px-6 py-3 text-white/70 hover:text-white hover:border-white/40 transition-all"
+              className="px-4 py-3 border border-line-bright text-fg-muted hover:border-accent hover:text-accent transition-colors"
             >
               {s.label}
             </a>
           ))}
         </div>
-        </div>
-        {profile.photo && (
-          <div className="shrink-0 self-center md:self-auto">
-            <div className="rounded-full p-1.5 bg-gradient-to-tr from-fuchsia-500 via-violet-500 to-sky-500 shadow-2xl shadow-violet-500/40">
-              <img
-                src={profile.photo}
-                alt={profile.name}
-                className="h-44 w-44 sm:h-56 sm:w-56 md:h-64 md:w-64 rounded-full object-cover"
-              />
-            </div>
-          </div>
-        )}
       </div>
+      {profile.photo && (
+        <div className="flex flex-col gap-2.5 border border-line p-2.5 max-w-[320px] md:justify-self-end">
+          <img
+            src={profile.photo}
+            alt={profile.name}
+            className="w-full aspect-square object-cover block"
+          />
+          <p className="text-[11px] text-fg-dim">📍 Based in {profile.location}</p>
+        </div>
+      )}
     </section>
   );
 }
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-display text-3xl sm:text-4xl font-bold mb-10">
-      <span className="text-gradient">{children}</span>
-    </h2>
+    <h3 className="text-[13px] text-accent font-medium">## {children}</h3>
   );
 }
 
 function About() {
   return (
-    <section id="about" className="scroll-mt-24 px-6 py-20">
-      <div className="mx-auto max-w-5xl">
-        <SectionHeading>About Me</SectionHeading>
-        <div className="max-w-3xl space-y-5 text-lg text-white/70">
-          {profile.about.map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
-          <p className="text-white/50">
-            📍 Based in {profile.location}
+    <section
+      id="about"
+      className="scroll-mt-20 py-12 sm:py-16 border-t border-line flex flex-col gap-[22px]"
+    >
+      <SectionHeading>about-me</SectionHeading>
+      <div className="flex flex-col gap-4 max-w-[44em]">
+        {profile.about.map((paragraph, i) => (
+          <p
+            key={i}
+            className={`text-base leading-[1.75] ${i === 0 ? "text-fg" : "text-fg-mid"}`}
+          >
+            {paragraph}
           </p>
-        </div>
+        ))}
       </div>
     </section>
   );
@@ -88,95 +92,85 @@ function About() {
 
 function Experience() {
   return (
-    <section id="experience" className="scroll-mt-24 px-6 py-20">
-      <div className="mx-auto max-w-5xl">
-        <SectionHeading>Experience</SectionHeading>
-        <div className="relative border-l-2 border-violet-500/30 ml-3 space-y-12">
-          {profile.experience.map((job) => (
-            <div key={`${job.company}-${job.period}`} className="relative pl-8">
-              <span className="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-gradient-to-r from-fuchsia-500 to-sky-500 ring-4 ring-ink" />
-              <p className="text-sm font-semibold text-sky-300 mb-1">
-                {job.period}
-              </p>
-              <h3 className="font-display text-xl font-bold text-white">
-                {job.role}{" "}
-                <span className="text-white/60 font-medium">
-                  ·{" "}
-                  {job.companyUrl ? (
-                    <a
-                      href={job.companyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-sky-300 transition-colors"
-                    >
-                      {job.company}
-                    </a>
-                  ) : (
-                    job.company
-                  )}
-                </span>
-              </h3>
-              <ul className="mt-3 space-y-2 text-white/60">
-                {job.points.map((point, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="text-fuchsia-400 mt-1">▹</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        {profile.education.length > 0 && (
-          <div className="mt-16">
-            <h3 className="font-display text-xl font-bold text-white mb-6">
-              Education
-            </h3>
-            {profile.education.map((edu) => (
-              <div
-                key={edu.institution}
-                className="rounded-2xl bg-card/60 border border-white/5 p-6"
-              >
-                <p className="font-display font-semibold text-white">
-                  {edu.degree}
-                </p>
-                <p className="text-white/60 mt-1">{edu.institution}</p>
-              </div>
-            ))}
+    <section
+      id="experience"
+      className="scroll-mt-20 py-12 sm:py-16 border-t border-line flex flex-col gap-6"
+    >
+      <SectionHeading>experience</SectionHeading>
+      {profile.experience.map((job) => (
+        <div
+          key={`${job.company}-${job.period}`}
+          className="border border-line p-6 sm:p-[30px] flex flex-col gap-[18px] hover:border-line-bright transition-colors"
+        >
+          <div className="flex justify-between items-baseline gap-5 flex-wrap">
+            <h4 className="text-[17px] sm:text-xl font-bold text-fg-bright leading-snug">
+              {job.role} ·{" "}
+              {job.companyUrl ? (
+                <a
+                  href={job.companyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent border-b border-transparent hover:border-accent"
+                >
+                  {job.company}
+                </a>
+              ) : (
+                <span className="text-accent">{job.company}</span>
+              )}
+            </h4>
+            <p className="text-xs text-fg-dim whitespace-nowrap">{job.period}</p>
           </div>
-        )}
-      </div>
+          <ul className="flex flex-col gap-[11px]">
+            {job.points.map((point, i) => (
+              <li
+                key={i}
+                className="text-[15px] leading-[1.65] text-fg-soft flex gap-2.5"
+              >
+                <span className="text-accent flex-none">▹</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      {profile.education.map((edu) => (
+        <div
+          key={edu.institution}
+          className="border border-line px-6 sm:px-[30px] py-5 sm:py-[26px] flex justify-between items-baseline gap-5 flex-wrap"
+        >
+          <div className="flex flex-col gap-1">
+            <p className="text-[17px] font-bold text-fg-bright">{edu.degree}</p>
+            <p className="text-sm leading-normal text-fg-muted">
+              {edu.institution}
+            </p>
+          </div>
+          <p className="text-xs text-fg-dim">education</p>
+        </div>
+      ))}
     </section>
   );
 }
 
 function Skills() {
   return (
-    <section id="skills" className="scroll-mt-24 px-6 py-20">
-      <div className="mx-auto max-w-5xl">
-        <SectionHeading>Skills</SectionHeading>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {profile.skills.map((group) => (
-            <div
-              key={group.category}
-              className="rounded-2xl bg-card/60 border border-white/5 p-6 hover:border-violet-500/40 hover:-translate-y-1 transition-all"
-            >
-              <h3 className="font-display font-bold text-lg mb-4 text-white">
-                {group.category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {group.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full bg-violet-500/15 border border-violet-400/25 px-3 py-1 text-sm text-violet-200"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+    <section
+      id="skills"
+      className="scroll-mt-20 py-12 sm:py-16 border-t border-line flex flex-col gap-[26px]"
+    >
+      <SectionHeading>skills</SectionHeading>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-7">
+        {profile.skills.map((group) => (
+          <div key={group.category} className="flex flex-col gap-3">
+            <p className="text-[13px] text-fg-bright border-b border-line pb-2">
+              {group.category}
+            </p>
+            <div className="flex flex-col gap-2 text-[13px] leading-snug text-fg-mid">
+              {group.items.map((skill) => (
+                <span key={skill}>{skill}</span>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -187,27 +181,35 @@ function Blog() {
   if (posts.length === 0) return null;
 
   return (
-    <section id="blog" className="scroll-mt-24 px-6 py-20">
-      <div className="mx-auto max-w-5xl">
-        <SectionHeading>Blog</SectionHeading>
-        <div className="grid gap-6 md:grid-cols-3">
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}/`}
-              className="group rounded-2xl bg-card/60 border border-white/5 p-6 hover:border-sky-400/40 hover:-translate-y-1 transition-all"
-            >
-              <p className="text-xs text-white/40 mb-3">{post.date}</p>
-              <h3 className="font-display font-bold text-lg text-white group-hover:text-sky-300 transition-colors mb-2">
-                {post.title}
-              </h3>
-              <p className="text-sm text-white/60 line-clamp-3">
-                {post.excerpt}
-              </p>
-            </Link>
-          ))}
-        </div>
+    <section
+      id="blog"
+      className="scroll-mt-20 py-12 sm:py-16 border-t border-line flex flex-col gap-[22px]"
+    >
+      <div className="flex justify-between items-baseline gap-4">
+        <SectionHeading>blog</SectionHeading>
+        <Link href="/blog/" className="text-xs text-fg-dim hover:text-accent">
+          all posts →
+        </Link>
       </div>
+      {posts.map((post) => (
+        <Link
+          key={post.slug}
+          href={`/blog/${post.slug}/`}
+          className="flex gap-4 sm:gap-6 items-baseline border border-line p-5 sm:px-[26px] sm:py-6 flex-wrap hover:border-accent hover:bg-card transition-colors"
+        >
+          <span className="text-xs text-fg-dim whitespace-nowrap">
+            {post.date}
+          </span>
+          <span className="flex flex-col gap-[7px] min-w-[220px] flex-1">
+            <span className="text-lg font-bold text-fg-bright">
+              {post.title}
+            </span>
+            <span className="text-sm leading-[1.65] text-fg-mid">
+              {post.excerpt}
+            </span>
+          </span>
+        </Link>
+      ))}
     </section>
   );
 }
@@ -215,9 +217,8 @@ function Blog() {
 export default function Home() {
   return (
     <>
-      <Blobs />
       <Nav />
-      <main>
+      <main className="mx-auto max-w-[1000px] px-6 sm:px-8">
         <Hero />
         <About />
         <Experience />
