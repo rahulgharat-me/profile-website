@@ -60,16 +60,44 @@ export const profile = {
   ],
   experience: [
     {
-      role: "Senior Product Manager",
-      company: "Deltecs Infotech Pvt Ltd (DronaHQ)",
+      role: "Product Manager",
+      company: "DronaHQ (Deltecs Infotech)",
       companyUrl: "https://www.dronahq.com",
-      period: "Jun 2017 — Present",
+      period: "Mar 2023 — Present",
       points: [
-        "Drive product strategy and roadmap for DronaHQ, a low-code platform used by businesses to build internal tools and apps rapidly.",
-        "Work across the full product lifecycle — from discovery and specs to architecture decisions, release planning, and go-to-market.",
-        "Lead DevOps and AI initiatives — from CI/CD and release automation to AI-powered platform capabilities.",
-        "Partner closely with engineering, design, and customers to ship features fast without compromising on quality.",
-        "Grew from a hands-on engineering background into product leadership, bridging the gap between technical and business teams.",
+        "Own the end-to-end product lifecycle — feasibility, design, roadmapping, and go-to-market for DronaHQ's low-code/no-code platform.",
+        "Contributed to the AI agent building platform — shaping how customers design and deploy AI-powered workflows.",
+        "Lead DevOps and release initiatives, keeping the path from idea to production fast and reliable.",
+      ],
+    },
+    {
+      role: "Product Architect",
+      company: "DronaHQ (Deltecs Infotech)",
+      companyUrl: "https://www.dronahq.com",
+      period: "Mar 2021 — Feb 2023",
+      points: [
+        "Architected a drag-and-drop workflow engine for heavy, long-running backend jobs — enabling teams to eliminate custom backend development.",
+        "Built Action Flows, a browser-side automation layer for orchestrating client-side logic without code.",
+      ],
+    },
+    {
+      role: "Product Engineer",
+      company: "DronaHQ (Deltecs Infotech)",
+      companyUrl: "https://www.dronahq.com",
+      period: "Dec 2017 — Feb 2021",
+      points: [
+        "Designed and shipped multiple customer-facing capabilities of the low-code app building platform.",
+        "Bridged engineering and product — contributed to feasibility assessments, wireframes, and technical design reviews.",
+      ],
+    },
+    {
+      role: "Software Engineering Trainee",
+      company: "DronaHQ (Deltecs Infotech)",
+      companyUrl: "https://www.dronahq.com",
+      period: "Jun 2017 — Nov 2017",
+      points: [
+        "Trained on the core product stack and engineering practices.",
+        "Contributed to early product builds and internal tooling under senior engineering supervision.",
       ],
     },
   ],
