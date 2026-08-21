@@ -19,8 +19,10 @@ export default function Footer() {
             <a
               key={s.label}
               href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={s.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={
+                s.href.startsWith("mailto:") ? undefined : "noopener noreferrer"
+              }
               className="hover:text-accent transition-colors"
             >
               {s.label}

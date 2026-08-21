@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Nav from "@/components/Nav";
+import ContactButton from "@/components/ContactButton";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
 import { getAllPosts } from "@/lib/posts";
@@ -30,12 +31,7 @@ function Hero() {
           {profile.tagline}
         </p>
         <div className="flex gap-2.5 flex-wrap pt-2 text-[13px]">
-          <a
-            href={`mailto:${profile.email}`}
-            className="px-[18px] py-3 bg-accent text-accent-ink font-bold hover:bg-accent-bright hover:-translate-y-0.5 transition-all"
-          >
-            get in touch →
-          </a>
+          <ContactButton email={profile.email} />
           {socials.map((s) => (
             <a
               key={s.label}
