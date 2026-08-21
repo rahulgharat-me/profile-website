@@ -14,7 +14,8 @@ function Hero() {
 
   return (
     <section className="min-h-screen flex flex-col justify-center px-6 pt-16">
-      <div className="mx-auto max-w-5xl w-full animate-fade-up">
+      <div className="mx-auto max-w-5xl w-full animate-fade-up flex flex-col-reverse md:flex-row md:items-center gap-10">
+        <div className="flex-1">
         <p className="font-display text-lg text-sky-300 mb-4">Hey there, I'm</p>
         <h1 className="font-display text-5xl sm:text-7xl font-bold tracking-tight mb-4">
           <span className="text-gradient">{profile.name}</span>
@@ -42,6 +43,18 @@ function Hero() {
             </a>
           ))}
         </div>
+        </div>
+        {profile.photo && (
+          <div className="shrink-0 self-center md:self-auto">
+            <div className="rounded-full p-1.5 bg-gradient-to-tr from-fuchsia-500 via-violet-500 to-sky-500 shadow-2xl shadow-violet-500/40">
+              <img
+                src={profile.photo}
+                alt={profile.name}
+                className="h-44 w-44 sm:h-56 sm:w-56 md:h-64 md:w-64 rounded-full object-cover"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -114,6 +127,24 @@ function Experience() {
             </div>
           ))}
         </div>
+        {profile.education.length > 0 && (
+          <div className="mt-16">
+            <h3 className="font-display text-xl font-bold text-white mb-6">
+              Education
+            </h3>
+            {profile.education.map((edu) => (
+              <div
+                key={edu.institution}
+                className="rounded-2xl bg-card/60 border border-white/5 p-6"
+              >
+                <p className="font-display font-semibold text-white">
+                  {edu.degree}
+                </p>
+                <p className="text-white/60 mt-1">{edu.institution}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "preview": "npm run build && serve out",
+    "deploy": "npm run build && gh-pages -d out --nojekyll",
     "lint": "next lint"
   },
   "dependencies": {
@@ -21,6 +23,8 @@
     "@types/node": "^24.2.1",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "gh-pages": "^6.3.0",
+    "serve": "^14.2.6",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2"
   }
