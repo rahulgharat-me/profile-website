@@ -26,7 +26,7 @@ export const profile = {
     },
   ],
   location: "Mumbai, India",
-  email: "rahul@dronamobile.com",
+  email: "hello@rahulgharat.me",
   social: {
     github: "https://github.com/rahulgharat-me",
     linkedin: "https://www.linkedin.com/in/rahulgharat-me",
